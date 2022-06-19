@@ -9,6 +9,7 @@ from lxml import html
 
 
 EX_USAGE = 64
+EX_NOUSER = 67
 
 
 if len(sys.argv) < 2:
@@ -27,6 +28,12 @@ cookie_jar = browser_cookie3.chrome(
 opener = request.build_opener(request.HTTPCookieProcessor(cookie_jar))
 
 page_html = opener.open(url).read()
+
+not_logged_in_search = b'Sign in to continue to Chrome Web Store'
+
+if not_logged_in_search in page_html:
+    print('error: not authenticated', file=sys.stderr)
+    sys.exit(EX_NOUSER)
 
 tree = html.fromstring(page_html)
 
