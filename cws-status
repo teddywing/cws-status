@@ -3,6 +3,7 @@
 from urllib import request
 
 import browser_cookie3
+from lxml import html
 
 url = 'https://chrome.google.com/webstore/devconsole/<UUID>'
 
@@ -14,4 +15,10 @@ opener = request.build_opener(request.HTTPCookieProcessor(cookie_jar))
 
 page_html = opener.open(url).read()
 
-print(page_html)
+tree = html.fromstring(page_html)
+
+item_names = tree.xpath('//table[//th[text()="Item"]]/tbody/tr/td[1]/a/div//text()')
+print(item_names)
+
+item_statuses = tree.xpath('//table[//th[text()="Item"]]/tbody/tr/td[7]/text()')
+print(item_statuses)
