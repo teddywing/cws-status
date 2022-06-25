@@ -35,8 +35,17 @@ EX_USAGE = 64
 EX_NOUSER = 67
 
 
+class ArgumentParser(argparse.ArgumentParser):
+
+    def error(self, message):
+        try:
+            super().error(message)
+        except SystemExit:
+            sys.exit(EX_USAGE)
+
+
 # Parse arguments.
-argparser = argparse.ArgumentParser(description='Query the publish status of \
+argparser = ArgumentParser(description='Query the publish status of \
     extensions on the Chrome Web Store dashboard.')
 argparser.add_argument(
     '--url',
