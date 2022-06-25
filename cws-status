@@ -29,6 +29,7 @@ from urllib import request
 import browser_cookie3
 from lxml import html
 
+VERSION = '0.0.1'
 
 EX_USAGE = 64
 EX_NOUSER = 67
@@ -48,6 +49,13 @@ argparser.add_argument(
     help='path to a Google Chrome cookie file',
 )
 argparser.add_argument('name_regex', metavar='<name-regex>')
+
+argparser.add_argument(
+    '-V',
+    '--version',
+    action='version',
+    version=VERSION,
+)
 
 args = argparser.parse_args()
 
