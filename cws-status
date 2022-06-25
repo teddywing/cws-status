@@ -37,7 +37,7 @@ EX_NOUSER = 67
 
 # Parse arguments.
 argparser = argparse.ArgumentParser(description='Query the publish status of \
-    extensions on the Chromw Web Store dashboard.')
+    extensions on the Chrome Web Store dashboard.')
 argparser.add_argument(
     '--url',
     required=True,
