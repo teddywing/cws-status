@@ -40,12 +40,12 @@ argparser = argparse.ArgumentParser(description='Query the publish status of \
 argparser.add_argument(
     '--url',
     required=True,
-    help='Chrome Web Store dashboard URL'
+    help='Chrome Web Store dashboard URL',
 )
 argparser.add_argument(
     '--cookie-path',
     required=True,
-    help='path to a Google Chrome cookie file'
+    help='path to a Google Chrome cookie file',
 )
 argparser.add_argument('name_regex', metavar='<name-regex>')
 
