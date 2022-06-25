@@ -15,8 +15,8 @@ authenticating with the cookies from the Google Chrome browser.
 		--url 'https://chrome.google.com/webstore/devconsole/<UUID>' \
 		--cookie-path '~/Library/Application Support/Google/Chrome/Profile 1/Cookies' \
 		Example
-	Example extension BETA (Version 1.0)	Published to testers
-	Example extension (Version 1.0)	Published - public
+	Example extension BETA (Version 1.0)        Published to testers
+	Example extension (Version 1.0)             Published - public
 
 
 ## Install

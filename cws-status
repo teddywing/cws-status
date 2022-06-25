@@ -97,6 +97,17 @@ item_statuses = tree.xpath('//table[//th[text()="Item"]]/tbody/tr/td[7]/text()')
 
 
 # Print the publish status for the queried extensions.
+matched_extensions = []
+
 for i, name in enumerate(item_names_versions):
     if re.search(regex, name):
-        print(f'{name}\t{item_statuses[i]}')
+        matched_extensions.append((name, item_statuses[i]))
+
+name_width = max([len(pair[0]) for pair in matched_extensions])
+column_padding = 7
+
+for name, version in matched_extensions:
+    print(
+        name.ljust(name_width + column_padding),
+        version,
+    )
