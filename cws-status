@@ -90,5 +90,5 @@ item_statuses = tree.xpath('//table[//th[text()="Item"]]/tbody/tr/td[7]/text()')
 
 # Print the publish status for the queried extensions.
 for i, name in enumerate(item_names_versions):
-    if re.match(regex, name):
+    if re.search(regex, name):
         print(f'{name}\t{item_statuses[i]}')
