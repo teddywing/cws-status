@@ -14,6 +14,7 @@ EX_USAGE = 64
 EX_NOUSER = 67
 
 
+# Parse arguments.
 argparser = argparse.ArgumentParser(description='Query the publish status of \
     extensions on the Chromw Web Store dashboard.')
 argparser.add_argument(
@@ -34,6 +35,8 @@ args = argparser.parse_args()
 url = args.url
 regex = args.name_regex
 
+
+# Load browser cookies and fetch CWS dashboard.
 cookie_jar = browser_cookie3.chrome(
     cookie_file=os.path.expanduser(args.cookie_path),
 )
@@ -42,12 +45,16 @@ opener = request.build_opener(request.HTTPCookieProcessor(cookie_jar))
 
 page_html = opener.open(url).read()
 
+
+# Check whether we're authenticated.
 not_logged_in_search = b'Sign in to continue to Chrome Web Store'
 
 if not_logged_in_search in page_html:
     print('error: not authenticated', file=sys.stderr)
     sys.exit(EX_NOUSER)
 
+
+# Get extension names.
 tree = html.fromstring(page_html)
 
 item_names = tree.xpath('//table[//th[text()="Item"]]/tbody/tr/td[1]/a/div//text()')
@@ -56,8 +63,12 @@ item_names_versions = []
 for i in range(0, len(item_names), 2):
     item_names_versions.append(f'{item_names[i]} ({item_names[i + 1]})')
 
+
+# Get extension publish statuses.
 item_statuses = tree.xpath('//table[//th[text()="Item"]]/tbody/tr/td[7]/text()')
 
+
+# Print the publish status for the queried extensions.
 for i, name in enumerate(item_names_versions):
     if re.match(regex, name):
         print(f'{name}\t{item_statuses[i]}')
