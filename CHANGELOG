@@ -1,0 +1,12 @@
+CHANGELOG
+=========
+
+v0.0.2 (2023-05-15):
+	Fixes:
+
+	* Add new not authenticated check.
+
+v0.0.1 (2022-06-25):
+	First public release.
+
+ vim:tw=80:comments=:fo+=n:formatlistpat=^\\s*\\*\\s*

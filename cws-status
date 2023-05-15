@@ -4,7 +4,7 @@
 #
 # Print the publish status of extensions on the Chrome Web Store.
 
-# Copyright (c) 2022  Teddy Wing
+# Copyright (c) 2022–2023  Teddy Wing
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ from urllib import request
 import browser_cookie3
 from lxml import html
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 
 EX_USAGE = 64
 EX_NOUSER = 67
