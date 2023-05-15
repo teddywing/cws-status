@@ -85,8 +85,10 @@ page_html = opener.open(url).read()
 
 # Check whether we're authenticated.
 not_logged_in_search = b'Sign in to continue to Chrome Web Store'
+signin_search = b'<base href="https://accounts.google.com/v3/signin/"'
 
-if not_logged_in_search in page_html:
+if not_logged_in_search in page_html \
+or signin_search in page_html:
     print('error: not authenticated', file=sys.stderr)
     sys.exit(EX_NOUSER)
 
