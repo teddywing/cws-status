@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+v0.0.3 (2023-08-08):
+	Fixes:
+
+	* Correct an out of bounds error on `item_statuses` causing the program to
+	  crash for certain inputs.
+
 v0.0.2 (2023-05-15):
 	Fixes:
 
