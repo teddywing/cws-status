@@ -111,6 +111,8 @@ item_statuses = tree.xpath('//table[//th[text()="Item"]]/tbody/tr/td[7]/text()')
 matched_extensions = []
 
 for i, name in enumerate(item_names_versions):
+    print(i, name, item_names_versions, item_statuses)
+    print(i, item_statuses)
     if re.search(regex, name):
         matched_extensions.append((name, item_statuses[i]))
 
