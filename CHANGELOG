@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+v0.0.4 (2023-11-10):
+	Changes:
+
+	* Print an error message if the input regex does not match any extensions
+	  instead of a Python runtime error.
+
 v0.0.3 (2023-08-08):
 	Fixes:
 
