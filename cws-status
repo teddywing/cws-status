@@ -32,6 +32,7 @@ from lxml import html
 VERSION = '0.0.3'
 
 EX_USAGE = 64
+EX_DATAERR = 65
 EX_NOUSER = 67
 
 
@@ -118,6 +119,10 @@ for i, name in enumerate(item_names_versions):
 
     if re.search(regex, name):
         matched_extensions.append((name, item_statuses[i]))
+
+if len(matched_extensions) == 0:
+    print(f"error: no extensions matched the query: '{regex}'", file=sys.stderr)
+    sys.exit(EX_DATAERR)
 
 name_width = max([len(pair[0]) for pair in matched_extensions])
 column_padding = 7
